@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'
+import { DateDisplay } from "./DateDisplay"
 
 export const UserTable = (props) => (
     <Paper className="table">
-        <TableContainer>
+        <TableContainer style={{ maxHeight: "-webkit-fill-available" }}>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
@@ -18,7 +19,9 @@ export const UserTable = (props) => (
                         <TableRow key={user._id}>
                             <TableCell align="left">{user._id}</TableCell>
                             <TableCell align="left" scope="row">{user.source}</TableCell>
-                            <TableCell align="left">{user.createdAt}</TableCell>
+                            <TableCell align="left">
+                                <DateDisplay date={user.createdAt} />
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
