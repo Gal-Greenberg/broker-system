@@ -16,7 +16,7 @@ export const UserTable = (props) => (
                 </TableHead>
                 <TableBody>
                     {props.users.map((user) => (
-                        <TableRow key={user._id}>
+                        <TableRow id={user._id} onClick={() => props.onSelected(document.getElementById(user._id), user)}>
                             <TableCell align="left">{user._id}</TableCell>
                             <TableCell align="left" scope="row">{user.source}</TableCell>
                             <TableCell align="left">

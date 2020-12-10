@@ -1,11 +1,11 @@
 import './App.css';
-import React from "react";
+import React, { useState } from "react";
 import { UserTable } from './components/UserTable';
 import { User } from './components/User';
 
 import "./styles/styles.scss" 
 
-const user = {
+const user1 = {
   "_id": "5fbee816ec54006d58d7b245",
   "source": "simulated",
   "comment": "epf5n",
@@ -5196,11 +5196,29 @@ const users = [
   }
 ]
 
-const App = () => (
-  <div className="grid_2columns" style={{ gridTemplateColumns: "45% 55%", height: "95vh" }}>
-    <UserTable users={users} />
-    <User user={user} />
-  </div>
-)
+const App = () => {
+  const [currentUser, setCurrentUser] = useState();
+  const [currentUserTableRow, setCurrentUserTableRow]  = useState();
+
+  const onSelected = (userTableRow, user) => {
+    if (currentUserTableRow !== undefined && currentUserTableRow !== null) {
+      currentUserTableRow.style = `background: ;`
+    }
+
+    if (userTableRow !== undefined && userTableRow !== null) {
+      userTableRow.style = `background: #FFD700;`
+    }
+    setCurrentUserTableRow(userTableRow)
+
+    setCurrentUser(user)
+  }
+
+  return (
+    <div className="grid_2columns" style={{ gridTemplateColumns: "45% 55%", height: "95vh" }}>
+      <UserTable users={users} onSelected={onSelected} />
+      <User user={currentUser} onSelected={onSelected} />
+    </div>
+  )
+}
 
 export default App;

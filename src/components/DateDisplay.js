@@ -7,8 +7,8 @@ export const DateDisplay = (props) => {
     const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
     const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
     const dateOnly = `${da}-${mo}-${ye}`
-    console.log(dateOnly)  // for print
-    console.log(date)      // for hover
+    // console.log(dateOnly)  // for print
+    // console.log(date)      // for hover
 
     return (
         <Tooltip title={date.toString()}>

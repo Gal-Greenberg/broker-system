@@ -44,7 +44,7 @@ export const ProfileDataRow = (props) => (
         
         <ThemeProvider theme={muiTheme}>
             <Slider style={{ width: "14px !important" }} 
-                defaultValue={props.bid}
+                value={props.bid}
                 getAriaValueText={valuetext}
                 aria-labelledby="disabled-slider"
                 valueLabelDisplay="auto"
