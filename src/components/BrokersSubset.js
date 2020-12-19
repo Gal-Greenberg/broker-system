@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@material-ui/core"
+import { Accordion, AccordionSummary, AccordionDetails, Typography, makeStyles } from "@material-ui/core"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
 import { UsersSubset } from "./UsersSubset";
+import { DateDisplay } from "./DateDisplay"
 
 const brokersSubset = {
     "_id": "5fc4078527676003047cea74",
@@ -15858,7 +15859,20 @@ const users = [
     }
 ]
 
+const useStyles = makeStyles((theme) => ({
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+    },
+    secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+    },
+}));
+
 export const BrokersSubset = () => {
+    const classes = useStyles();
     const [expanded, setExpanded] = useState(false)
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -15870,7 +15884,10 @@ export const BrokersSubset = () => {
             {brokersSubset.brokers.map(broker => (
                 <Accordion key={broker._id} expanded={expanded === broker._id} onChange={handleChange(broker._id)}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content">
-                        <Typography>{broker._id}</Typography>
+                        <Typography className={classes.heading}>{broker._id}</Typography>
+                        <Typography className={classes.secondaryHeading}>
+                            <DateDisplay date={broker.createdAt} />
+                        </Typography>
                     </AccordionSummary>
 
                     <AccordionDetails>

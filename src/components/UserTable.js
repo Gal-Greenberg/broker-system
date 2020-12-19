@@ -5,7 +5,7 @@ import { DateDisplay } from "./DateDisplay"
 
 export const UserTable = (props) => (
     <Paper className="table">
-        {props.users !== undefined && <TableContainer style={{ maxHeight: "-webkit-fill-available" }}>
+        <TableContainer style={{ maxHeight: "-webkit-fill-available" }}>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
@@ -27,6 +27,6 @@ export const UserTable = (props) => (
                     ))}
                 </TableBody>
             </Table>
-        </TableContainer> }
+        </TableContainer>
     </Paper>
 )
