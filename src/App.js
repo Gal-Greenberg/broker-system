@@ -1,57 +1,10 @@
 import './App.css';
-import React, { useState } from "react";
-import { UserTable } from './components/UserTable';
-import { User } from './components/User';
+import React from "react";
+
+import { UsersSubset } from './components/UsersSubset';
+import { BrokersSubset } from './components/BrokersSubset';
 
 import "./styles/styles.scss" 
-
-const user1 = {
-  "_id": "5fbee816ec54006d58d7b245",
-  "source": "simulated",
-  "comment": "epf5n",
-  "profile": {
-    "age": {
-      "value": "18-24",
-      "bid": 65,
-      "informedBid": 64
-    },
-    "children": {
-      "value": "elementary school",
-      "bid": 2,
-      "informedBid": 68
-    },
-    "education": {
-      "value": "doctorate degree",
-      "bid": 83,
-      "informedBid": 47
-    },
-    "marital": {
-      "value": "single",
-      "bid": 28,
-      "informedBid": 9
-    },
-    "gender": {
-      "value": "female",
-      "bid": 71,
-      "informedBid": 11
-    },
-    "interests": [{
-      "value": "Jobs & Education",
-      "bid": 45,
-      "informedBid": 48
-    }, {
-      "value": "Real Estate",
-      "bid": 78,
-      "informedBid": 48
-    }, {
-      "value": "Business & Industrial",
-      "bid": 50,
-      "informedBid": 75
-    }]
-  },
-  "createdAt": "2020-11-25T23:26:14.863Z",
-  "updatedAt": "2020-11-25T23:26:14.863Z"
-}
 
 const users = [
   {
@@ -5196,29 +5149,9 @@ const users = [
   }
 ]
 
-const App = () => {
-  const [currentUser, setCurrentUser] = useState();
-  const [currentUserTableRow, setCurrentUserTableRow]  = useState();
-
-  const onSelected = (userTableRow, user) => {
-    if (currentUserTableRow !== undefined && currentUserTableRow !== null) {
-      currentUserTableRow.style = `background: ;`
-    }
-
-    if (userTableRow !== undefined && userTableRow !== null) {
-      userTableRow.style = `background: #FFD700;`
-    }
-    setCurrentUserTableRow(userTableRow)
-
-    setCurrentUser(user)
-  }
-
-  return (
-    <div className="grid_2columns" style={{ gridTemplateColumns: "45% 55%", height: "95vh" }}>
-      <UserTable users={users} onSelected={onSelected} />
-      <User user={currentUser} onSelected={onSelected} />
-    </div>
-  )
-}
+const App = () => (
+    <BrokersSubset />
+    // <UsersSubset users={users} />
+)
 
 export default App;

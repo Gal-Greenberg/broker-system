@@ -14,9 +14,9 @@ export const ProfileData = (props) => {
             {props.profile.interests.map(data => {
                 i++
                 return i === 1 ? 
-                    <ProfileDataRow label={"interests"} value={data.value} bid={data.bid} />
+                    <ProfileDataRow key={i} label={"interests"} value={data.value} bid={data.bid} />
                 :
-                    <ProfileDataRow label={""} value={data.value} bid={data.bid} />
+                    <ProfileDataRow key={i} label={""} value={data.value} bid={data.bid} />
             })}
         </div>
     )

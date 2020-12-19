@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core"
 import { DateDisplay } from "./DateDisplay"
 
 export const UserTable = (props) => (
     <Paper className="table">
-        <TableContainer style={{ maxHeight: "-webkit-fill-available" }}>
+        {props.users !== undefined && <TableContainer style={{ maxHeight: "-webkit-fill-available" }}>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
@@ -16,7 +16,8 @@ export const UserTable = (props) => (
                 </TableHead>
                 <TableBody>
                     {props.users.map((user) => (
-                        <TableRow id={user._id} onClick={() => props.onSelected(document.getElementById(user._id), user)}>
+                        <TableRow key={user._id} id={user._id} 
+                        onClick={() => props.onSelected(document.getElementById(user._id), user)}>
                             <TableCell align="left">{user._id}</TableCell>
                             <TableCell align="left" scope="row">{user.source}</TableCell>
                             <TableCell align="left">
@@ -26,6 +27,6 @@ export const UserTable = (props) => (
                     ))}
                 </TableBody>
             </Table>
-        </TableContainer>
+        </TableContainer> }
     </Paper>
 )

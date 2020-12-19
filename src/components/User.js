@@ -7,7 +7,7 @@ import { ProfileData } from "./ProfileData"
 import { DateDisplay } from "./DateDisplay"
 
 export const User = (props) => (
-    <Card className="card">
+    <Card style={{ overflow: "auto" }} className="card">
         {props.user !== undefined && <div className="card">
             <ClearIcon style={{ fontSize: 40, float: "right" }} onClick={() => props.onSelected()} />
             <div className="grid_2columns">
